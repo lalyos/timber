@@ -13,6 +13,10 @@ CMD /app/start
 # prod -> gunicorn
 ENV PRODUCTION=true
 ENV TIMBER_LISTEN_PORT=8080
+
+#ENV TIMBER_ACCESS_LOG=access.log # default: stdout
+#ENV TIMBER_LOG_FORMAT=json # default: line based text
+
 EXPOSE 8080
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
