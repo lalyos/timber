@@ -2,6 +2,12 @@
 
 [[ "$TRACE" ]] && set -x
 
+export PATH=$PATH:/usr/local/bin/
+
+# print available urls:
+flask routes
+
+
 # starts app
 if [[ "$PRODUCTION" == "true" ]]; then
   gunicorn -b 0.0.0.0:$TIMBER_LISTEN_PORT --access-logfile  ${TIMBER_ACCESS_LOG:=-} app:app
