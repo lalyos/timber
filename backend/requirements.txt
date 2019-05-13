@@ -12,7 +12,9 @@ gunicorn==19.9.0
 idna==2.8                 # via requests
 itsdangerous==1.1.0       # via flask
 jinja2==2.10              # via flask
+git+http://github.com/halkeye/jslog4kube
 markupsafe==1.1.0         # via jinja2
+python-json-logger==0.1.11
 redis==3.0.1
 requests==2.21.0
 urllib3==1.24.1           # via requests

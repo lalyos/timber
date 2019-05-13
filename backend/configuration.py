@@ -1,4 +1,7 @@
 import os
+from logging.config import dictConfig
+from jslog4kube import LOGGING
+
 
 # If any of these environment variables are set, enable these features
 liveness_probe_enabled = bool(os.getenv('TIMBER_LIVENESS_PROBE_ENABLED') is not None)
@@ -15,6 +18,11 @@ redis_host = os.getenv('TIMBER_REDIS_HOST', 'redis')
 # The state saving is set to `inmemory` by default.
 # The possible options are `inmemory`, `storage`, `redis`
 state = os.getenv('TIMBER_STATE', 'inmemory')
+
+logger = os.getenv('TIMBER_LOG_FORMAT', 'text')
+if logger == 'json':
+    dictConfig(LOGGING)
+
 
 # Version
 # This will be shown on the homepage.

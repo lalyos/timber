@@ -1,4 +1,5 @@
 flask
 redis
 requests
+git+http://github.com/halkeye/jslog4kube
 gunicorn

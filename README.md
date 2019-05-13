@@ -100,7 +100,8 @@ This is set through environment variables.
 | `TIMBER_STATE`                   | State storage: `inmemory`, `redis` | `inmemory` |
 | `TIMBER_LISTEN_PORT`             | Set the port Timber listens on | 8080 |
 | `TIMBER_ACCESS_LOG`              | Sets the access log path | stdout |
-| `PRODUCTION`                     | use gunicorn as wsgi | treu |  
+| `TIMBER_LOG_FORMAT`              | Choose between line-based-text or json format | text |
+| `PRODUCTION`                     | Use gunicorn as wsgi | treu |  
 
 
 ```
