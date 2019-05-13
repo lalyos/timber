@@ -76,6 +76,7 @@ if configuration.readiness_probe_enabled:
         return 'I am doing well!'
 
 
-app.run(host='0.0.0.0', port=configuration.listen_port, debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=configuration.listen_port, debug=True)
 
 print('Hello, this is backend!')  # So we can see it in the `kubectl` logs.

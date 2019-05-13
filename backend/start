@@ -1,0 +1,10 @@
+#!/bin/bash
+
+[[ "$TRACE" ]] && set -x
+
+# starts app
+if [[ "$PRODUCTION" == "true" ]]; then
+  gunicorn -b 0.0.0.0:$TIMBER_LISTEN_PORT --access-logfile  ${TIMBER_ACCESS_LOG:=-} app:app
+else
+  python3 app.py
+fi
