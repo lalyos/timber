@@ -1,0 +1,56 @@
+## cat lunch.taml |NAME=breaky COLOR=cyan TITLE=Breakfast BODY=cats envsubst |kubectl apply -f
+apiVersion: v1
+kind: Service
+metadata:
+  name: $NAME
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: $NAME
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: $NAME
+  name: $NAME
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: $NAME
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: $NAME
+    spec:
+      containers:
+      - env:
+        - name: TITLE
+          value: $TITLE
+        - name: COLOR
+          value: $COLOR
+        - name: BODY
+          value: $BODY
+        image: lalyos/lunch-wto
+        name: $NAME
+        ports:
+        - containerPort: 80
+        resources: {}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: $NAME
+spec:
+  rules:
+  - host: $NAME.$NS.ing.k8z.eu
+    http:
+      paths:
+      - backend:
+          serviceName: $NAME
+          servicePort: 80
