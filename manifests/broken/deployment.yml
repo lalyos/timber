@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: broken-timber
-          image: eu.gcr.io/container-solutions-workshops/timber/backend:3.14159
+          image: ghcr.io/lalyos/timber-backend:3.14159
           ports:
           - containerPort: 8080
           env:
