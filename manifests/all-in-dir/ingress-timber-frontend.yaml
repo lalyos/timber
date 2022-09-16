@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: timber-frontend
+spec:
+  rules:
+  -   host: timber-frontend.${NS}.k8z.eu
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: timber-frontend
+                port:
+                  number: 8080
+
