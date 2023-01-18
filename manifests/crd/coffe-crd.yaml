@@ -1,10 +1,10 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: coffees.lalyos.com
+  name: coffees.lalyo.sh
 spec:
   scope: Namespaced
-  group: lalyos.com
+  group: lalyo.sh
   names:
     kind: Coffee
     plural: coffees

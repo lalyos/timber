@@ -4,3 +4,4 @@ metadata:
   name: americano
 spec:
   strong: 4
+  origin: usa
