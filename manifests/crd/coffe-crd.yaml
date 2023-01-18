@@ -1,22 +1,36 @@
-apiVersion: apiextensions.k8s.io/v1beta1
+apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   name: coffees.lalyos.com
 spec:
   scope: Namespaced
   group: lalyos.com
-  version: v1
-  additionalPrinterColumns:
-  - name: strong
-    JSONPath: .spec.strong
-    type: integer
-  - name: origin
-    JSONPath: .spec.origin
-    type: string
-
   names:
     kind: Coffee
     plural: coffees
     singular: coffee
     shortNames:
     - cf
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    additionalPrinterColumns:
+    - name: strong
+      jsonPath: .spec.strong
+      type: integer
+    - name: origin
+      jsonPath: .spec.origin
+      type: string
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              origin:
+                type: string
+              strong:
+                type: integer
+
