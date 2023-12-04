@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: timber-frontend
+  annotations:
+    # k htpasswd create basic-auth admin=secret
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: basic-auth
+    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required - foo'
+spec:
+  rules:
+  -   host: timber.${NS}.k8z.eu
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: timber-frontend
+                port:
+                  number: 8080
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: basic-auth
+data:
+  auth: YWRtaW46JDJhJDEwJG9qanFwWGx6WnRTajV1S0NUMFdscC5GNkY5Y2NBZ3hMZld4RHRSQmhQeEhxOVNsb09HdWpD
