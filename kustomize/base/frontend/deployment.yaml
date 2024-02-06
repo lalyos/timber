@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: timber-frontend
-        image: eu.gcr.io/container-solutions-workshops/timber/frontend
+        image: ghcr.io/lalyos/timber-frontend
         ports:
         - containerPort: 8080
         env:
