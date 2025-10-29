@@ -5,10 +5,10 @@ metadata:
     app: timber-frontend
   name: timber-frontend
 spec:
+  type: NodePort
   ports:
-  - port: 8080
-    protocol: TCP
-    targetPort: 8080
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
   selector:
     app: timber-frontend
-
